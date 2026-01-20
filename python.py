@@ -3,7 +3,6 @@ import random
 import keyboard
 import time
 import os
-import LoreBook
 from dataclasses import dataclass
 from colorama import Fore, Style
 
@@ -102,12 +101,12 @@ upgrade_list = [
 # Input / Logic
 # =======================
 
+def wait_for_key_release(key):
+    while keyboard.is_pressed(key):
+        time.sleep(0.01)
 def InputHandler(gamestate: Gamestate):
-    if keyboard.is_pressed('l'):
-        gamestate.loreBookActive = not gamestate.loreBookActive
-        time.sleep(0.3)
-
     if keyboard.is_pressed('enter'):
+        wait_for_key_release('enter')
         Roll_Logic(gamestate)
         time.sleep(0.3)
 
@@ -128,6 +127,8 @@ def Upgrade_Logic(gamestate: Gamestate, upgrade: Upgrades):
     if not keyboard.is_pressed(upgrade.key):
         return
 
+    wait_for_key_release(upgrade.key)
+
     if upgrade.OneTime and upgrade.purchased:
         return
 
@@ -138,6 +139,7 @@ def Upgrade_Logic(gamestate: Gamestate, upgrade: Upgrades):
     gamestate.dicesides += upgrade.Dicesides
     gamestate.diceAmount += upgrade.diceAmount
     gamestate.scoreMultiplier += upgrade.scoreMultiplier
+    upgrade.cost *= upgrade.priceMultiplier
 
     if upgrade.name == "Idle Activation Upgrade":
         gamestate.idleActivation = True
@@ -193,3 +195,4 @@ while True:
     InputHandler(gamestate)
     for upgrade in upgrade_list:
         Upgrade_Logic(gamestate, upgrade)
+    time.sleep(0.02)
