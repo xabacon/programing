@@ -3,7 +3,7 @@ import random
 import keyboard
 import time
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass,field
 from colorama import Fore, Style
 
 # =======================
@@ -97,6 +97,21 @@ upgrade_list = [
     idle_Activation_Upgrade
 ]
 
+
+# =======================
+# Effects
+# =======================
+
+Bleeding = Effects(
+
+)
+Freeze = Effects(
+
+)
+
+
+
+
 # =======================
 # Input / Logic
 # =======================
@@ -115,12 +130,15 @@ def InputHandler(gamestate: Gamestate):
 
 
 def Roll_Logic(gamestate: Gamestate):
+    latestRolls: list[int] = []
     gamestate.diceSum = 0
-    for _ in range(gamestate.diceAmount):
-        gamestate.diceSum += random.randint(1, gamestate.dicesides)
+    for i in range(gamestate.diceAmount):
+        Roll = random.randint(1, gamestate.dicesides)
+        gamestate.diceSum += Roll
+        latestRolls.append(Roll)
 
     gamestate.score += gamestate.diceSum * gamestate.scoreMultiplier
-    Print_UI(gamestate)
+    Print_UI(gamestate,latestRolls)
 
 
 def Upgrade_Logic(gamestate: Gamestate, upgrade: Upgrades):
@@ -145,7 +163,7 @@ def Upgrade_Logic(gamestate: Gamestate, upgrade: Upgrades):
         gamestate.idleActivation = True
         upgrade.purchased = True
 
-    Print_UI(gamestate)
+    Print_UI(gamestate,[])
     print(Fore.GREEN + f"You purchased {upgrade.name}!" + Style.RESET_ALL)
     time.sleep(0.3)
 
@@ -154,17 +172,19 @@ def Upgrade_Logic(gamestate: Gamestate, upgrade: Upgrades):
 # UI
 # =======================
 
-def Print_UI(gamestate: Gamestate):
+def Print_UI(gamestate: Gamestate,rolls:list[int]):
     os.system('cls' if os.name == 'nt' else 'clear')
 
     print("============================================================")
     print(Fore.GREEN + "Dice Game" + Style.RESET_ALL)
     print("============================================================")
-    print(f"Score: {gamestate.score}")
+    print(f"Score: {gamestate.score:.2f}")
     print(f"Dice Sides: {gamestate.dicesides}")
     print(f"Dice Amount: {gamestate.diceAmount}")
     print(f"Score Multiplier: {gamestate.scoreMultiplier}")
     print(f"Corruption: {gamestate.corruption:.2f}%")
+    for i,Roll in enumerate(rolls):
+        print(f"Roll {i + 1} = {Roll}")
     print("")
     print("============================================================")
     print(Fore.MAGENTA + "Upgrade Menu" + Style.RESET_ALL)
@@ -176,7 +196,7 @@ def Print_UI(gamestate: Gamestate):
         print(
             Fore.RED + f"Press '{upgrade.key}' " +
             Fore.LIGHTBLUE_EX + upgrade.name +
-            Fore.RESET + f" ({upgrade.cost} points)" + Style.RESET_ALL
+            Fore.RESET + f" ({upgrade.cost:.2f} points)" + Style.RESET_ALL
         )
         print(Fore.YELLOW + upgrade.description + Style.RESET_ALL)
 
@@ -189,7 +209,7 @@ def Print_UI(gamestate: Gamestate):
 # =======================
 
 gamestate = Gamestate()
-Print_UI(gamestate)
+Print_UI(gamestate,[])
 
 while True:
     InputHandler(gamestate)
