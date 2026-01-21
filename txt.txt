@@ -1,0 +1,67 @@
+Early Game (1–5 effects) — Zen / Simple Fun
+
+Bleeding – Reduce total score by 1 for next 3 rolls per triggered die.
+“The die draws blood! Each bleeding die saps your strength slightly.”
+
+Freeze – Reduce dice sides by 1 for the next roll.
+“Cold as ice! Chills your next roll.”
+
+Critical Hit – Double the die’s value.
+“Lucky strike! Smash for double points.”
+
+Corruption – Adds 0.5–1% corruption per triggered die.
+“Dark magic seeps in! Corruption spreads.”
+
+Spark – Adds +1 score to the roll.
+“Tiny burst of energy! Small but satisfying boost.”
+
+Mid Game (6–10 effects) — More Interaction / Slight Chaos
+
+Re-roll – Re-roll this die once.
+“Fickle fate! Roll again for better or worse.”
+
+Multiplier – Multiply this die by 1.5 (round down).
+“Numbers grow! Small multiplier makes each roll matter.”
+
+Decay – Reduce dice amount by 1 for next roll.
+“Dice crumble… fewer chances next time.”
+
+Inflate – Increase dice amount by 1 for next roll.
+“Bonus dice appear! Luck smiles upon you.”
+
+Swap – Swap this die’s value with another random die in the same roll.
+“Dice swap! Could help… or hurt.”
+
+Late Game (11–15 effects) — Chaos Mode
+
+Explosion – Add 2–4 extra dice to this roll only.
+“Boom! Extra dice spring into existence.”
+
+Steal – Take 5% of total score from last roll.
+“Thief in the night! Score siphoned temporarily.”
+
+Mirror – Repeat this die’s value on the next roll.
+“Your past echoes… sometimes good, sometimes bad.”
+
+Invert – Subtract this die value from score instead of adding.
+“Upside down! Positive becomes negative.”
+
+Chain – Trigger one random effect from the set on another die in the same roll.
+“One effect calls another… chaos spreads.”
+
+Extra Late Game (16–20 effects) — Full Madness
+
+Surge – Double the effect of a random late-game effect already triggered this roll.
+“Power amplifies! Late-game chaos intensifies.”
+
+Time Warp – Double score of this die, but skip its next roll.
+“Fast forward… but pay the price later.”
+
+Explosion+ – Add 5–10 dice to this roll only.
+“Dice everywhere! Pure spectacle.”
+
+Reverse Corruption – Reduces corruption by 1% per triggered die.
+“A rare boon! Negative becomes slightly positive.”
+
+Chaos Surge – Trigger 2–3 random effects on random dice in this roll.
+“Absolute madness! Multiple effects collide.”
